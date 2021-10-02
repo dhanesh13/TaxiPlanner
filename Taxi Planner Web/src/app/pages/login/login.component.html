@@ -1,0 +1,55 @@
+   <div class="bg-img">
+  <form [formGroup]="LoginForm" (ngSubmit)="loginUser()" class="container">
+    <h1 style="text-align: center;">LOGIN</h1>
+
+    <label class="login-main-text" style="margin-top: 5vh;" for="email"
+      ><b>Email</b></label
+    >
+    <input
+      type="text"
+      placeholder="Enter Email"
+      class="login-main-text"
+      formControlName="email"
+    />
+    <div>
+      <span *ngIf="!email.valid && email.touched" class="error-block">
+        <span *ngIf="email.hasError('required')">
+          Please provide your email address
+        </span>
+        <span *ngIf="email.hasError('email')">
+          Please provide valid email address
+        </span>
+      </span>
+    </div>
+
+    <br />
+    <label class="login-main-text" for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      class="login-main-text"
+      formControlName="password"
+    />
+    <span *ngIf="!password.valid && password.touched" class="error-block">
+      <span *ngIf="password.errors['required']">
+        Please provide password
+      </span>
+    </span>
+    <br />
+    <br />
+    <br />
+    <p *ngIf="_error == true" class="error">Invalid email or password</p>
+    <mat-spinner
+      class="spinner"
+      diameter="{{ 30 }}"
+      *ngIf="_loading"
+    ></mat-spinner>
+    <button *ngIf="!_loading" type="submit" class="btn">LOGIN</button>
+    <div class="credits ml-auto" style="text-align: center; margin-top: 10vh;">
+      <span class="copyright">
+        © {{ _current_date | date: "yyyy" }}, Powered by
+        <i class="fa fa-heart heart"></i> SD Worx
+      </span>
+    </div>
+  </form>
+</div>

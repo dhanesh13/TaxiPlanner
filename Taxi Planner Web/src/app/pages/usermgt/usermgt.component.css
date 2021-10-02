@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 30%;
+}
+
+td,
+th {
+  width: 10%;
+}
+
+.hidden {
+  display: none;
+}

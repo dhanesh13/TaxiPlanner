@@ -1,0 +1,32 @@
+#content {
+  margin: auto;
+  width: 1024px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  /* width: 10%; */
+  /* text-align: center; */
+}
+
+div.mat-sort-header-content.ng-tns-c84-1 {
+  margin: 0 auto !important;
+}
+
+.hidden {
+  display: none;
+}
+::ng-deep .mat-sort-header-content.ng-tns-c84-1 {
+  margin: 0 auto;
+}

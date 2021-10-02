@@ -1,0 +1,89 @@
+<spinner *ngIf="_loading" title="Generating Report"></spinner>
+
+<div class="container" *ngIf="!_loading">
+  <div class="row" style="margin: 3% 0 2% 0;">
+    <mat-button-toggle-group appearance="legacy">
+      <mat-button-toggle checked (click)="changeWeek(0)">
+        <b>Custom</b>
+      </mat-button-toggle>
+      <mat-button-toggle (click)="changeWeek(1)">
+        <b>Weekly</b>
+      </mat-button-toggle>
+      <mat-button-toggle (click)="changeMonth(1)">
+        <b>Monthly</b>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="row" *ngIf="!_loading">
+  <div class="col-md-12 col-md-12">
+    <div class="card shadow border-left-dark">
+      <div class="card-body" style="padding: 4vh 14vh 0vh 6vh;">
+        <!-- <div class="alert alert-warning alert-dismissible fade show" style="margin-bottom: 6vh; " role="alert">
+                        <strong>Attention! </strong>The two selected dates are included in the range generated for the report.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div> -->
+
+        <kendo-daterange style="margin-right: 30px;">
+          <label>
+            <span class="label"><b>From </b> </span>
+            <kendo-dateinput
+              [readonly]="true"
+              [format]="'MMMM-dd-yyyy'"
+              kendoDateRangeStartInput
+              autoCorrectOn="change"
+              [(value)]="range.start"
+            ></kendo-dateinput>
+          </label>
+          <label>
+            <span class="label" style="margin-left: 180px;"> <b>To </b></span>
+            <kendo-dateinput
+              [readonly]="true"
+              [format]="'MMMM-dd-yyyy'"
+              kendoDateRangeEndInput
+              autoCorrectOn="change"
+              [(value)]="range.end"
+            ></kendo-dateinput>
+          </label>
+          <kendo-daterange-popup [animate]="{ type: 'fade' }">
+            <ng-template kendoDateRangePopupTemplate>
+              <kendo-multiviewcalendar kendoDateRangeSelection [max]="max">
+              </kendo-multiviewcalendar>
+            </ng-template>
+          </kendo-daterange-popup>
+          <button
+            (click)="generate_csv()"
+            style="
+              background-color: #ce4f19;
+              margin-left: 3vh;
+              margin-right: 3vh;
+              float: right;
+              color: white;
+              margin-bottom: 3vh;
+              margin-top: 3vh;
+              width: 155px;
+              text-align: center;
+            "
+            mat-raised-button
+          >
+            <b>Generate Report</b>
+          </button>
+        </kendo-daterange>
+
+        <div style="margin-top: 20px;">
+          From <b>{{ range.start.toString().slice(0, 15) }}</b> To
+          <b>{{ range.end.toString().slice(0, 15) }}</b>
+          <div *ngIf="error" style="text-align: center;">
+            <h3 style="color: red; font-weight: 500;">
+              There are no reports available!
+            </h3>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  >
+</div>

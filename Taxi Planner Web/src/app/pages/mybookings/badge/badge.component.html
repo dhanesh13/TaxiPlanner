@@ -1,0 +1,18 @@
+<button
+  *ngIf="title == 'Approved'"
+  mat-flat-button
+  style="background-color: #7c2855; color: white;"
+>
+  Approved
+</button>
+
+<button *ngIf="title == 'Rejected'" mat-flat-button color="warn">
+  Rejected
+</button>
+<button
+  *ngIf="title == 'Pending'"
+  style="background-color: #e4e4e4;"
+  mat-flat-button
+>
+  Pending
+</button>

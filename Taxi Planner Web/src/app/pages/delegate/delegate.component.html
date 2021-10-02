@@ -1,0 +1,58 @@
+<spinner
+  class="spinner"
+  *ngIf="_loading"
+  title="{{ _loadingMessage }}"
+></spinner>
+
+<div class="delegate" *ngIf="!_loading">
+  <h3 style="padding-top: 3%;"></h3>
+  <label>
+    <form [formGroup]="employeeForm">
+      <mat-form-field>
+        <input
+          placeholder="Employee Name"
+          type="text"
+          formControlName="employee"
+          matInput
+          [matAutocomplete]="autoGroup"
+        />
+        <mat-autocomplete #autoGroup="matAutocomplete">
+          <mat-optgroup
+            *ngFor="let group of usersOptions | async"
+            [label]="group.letter"
+          >
+            <mat-option *ngFor="let name of group.names" [value]="name">
+              {{ name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </label>
+  &nbsp;
+
+  <kendo-daterange>
+    <label>
+      <span class="label">Start</span>
+      <kendo-dateinput
+        kendoDateRangeStartInput
+        [min]="fromMinDate"
+        kendoDateRangeStartInput
+        autoCorrectOn="change"
+        [(value)]="range.start"
+      ></kendo-dateinput>
+    </label>
+    <label style="margin-left: 15px;">
+      <span class="label">End</span>
+      <kendo-dateinput
+        kendoDateRangeEndInput
+        [(value)]="range.end"
+      ></kendo-dateinput>
+    </label>
+  </kendo-daterange>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="confirm()">Confirm</button>
+  <div style="margin-top: 20px;">
+    <p class="error" *ngIf="error.length > 0">{{ error }}</p>
+  </div>
+</div>

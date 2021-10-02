@@ -1,0 +1,8 @@
+.mat-button-toggle-group{ width: 100%;}
+  
+        .mat-button-toggle{
+            background-color: #f68300; width: 100%; color: white;border:0.5px double black !important;
+          }
+            .mat-button-toggle-checked{
+        background-color: #7c2855!important;
+        }

@@ -1,0 +1,75 @@
+<style>
+  @keyframes myanim {
+    0% {
+      transform: rotateY(0deg);
+      opacity: 0;
+    }
+
+    /* 50% {
+          transform: rotateY(360deg);
+      } */
+    100% {
+      opacity: 100;
+      transform: rotateY(1080deg);
+    }
+  }
+
+  .xd {
+    animation: myanim 5s;
+    /*animation-iteration-count: 3;*/
+  }
+</style>
+<!-- ============================================================== -->
+<!-- Topbar header - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<header class="topbar">
+  <nav class="navbar top-navbar navbar-expand-md navbar-light">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        <!-- Logo icon --><b>
+          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+          <!-- Dark Logo icon -->
+          <img src="assets/images/Taxi-Planner-Logo.png" alt="homepage" class="dark-logo xd" width="60px"
+            style="margin-bottom: 5px;" />
+          <!-- Light Logo icon -->
+        </b>
+        <!--End Logo icon -->
+        <!-- Logo text -->
+        <!-- dark Logo text -->
+        <span>
+          <img src="assets/images/logo.JPG" alt="homepage" class="dark-logo" width="160px" height="30px"
+            style="margin-left: -15px;" /></span>
+        <!-- Light Logo text -->
+      </a>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-collapse">
+      <!-- ============================================================== -->
+      <!-- toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav mr-auto">
+        <!-- This is  -->
+        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+            href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+            href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+        <li class="nav-item hidden-sm-down"></li>
+      </ul>
+      <!-- ============================================================== -->
+      <!-- Profile -->
+      <!-- ============================================================== -->
+      <ul style="
+          margin-right: 30px;
+          padding-top: 20px;
+          text-transform: capitalize;
+        ">
+        <b>{{ _name }}</b>
+      </ul>
+    </div>
+  </nav>
+</header>

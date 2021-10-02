@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+  background: white;
+}
+td {
+  color: black;
+  border-bottom: 1px solid lightgray;
+}
+th {
+  color: rgba(0, 0, 0, 0.54);
+  border-bottom: 1px solid lightgray;
+}
+
+.reasonOverflow {
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  max-width: 50px;
+}
+
+.hidden {
+  display: none;
+}
+.mybooking {
+  margin-top: 25px;
+}
+
+.search {
+  margin-bottom: 25px;
+  width: 35%;
+}
+mat-form-field {
+  width: 100%;
+}

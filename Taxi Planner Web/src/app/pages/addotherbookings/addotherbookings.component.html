@@ -1,0 +1,242 @@
+<spinner
+  class="spinner"
+  title="{{ _loadingMessage }}"
+  *ngIf="_loading"
+></spinner>
+
+<!--Start #F04-Khidir-->
+<div class="add_booking card-body" *ngIf="!_loading">
+  <div class="row">
+    <div class="col-md-12 col-md-12">
+      <form class="example-form" [formGroup]="employeeForm">
+        <mat-form-field class="example-full-width">
+          <mat-label><b>Make Booking For:</b></mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="employeeControl"
+            [matAutocomplete]="autoGroup"
+            [readonly]="_disableForm"
+          />
+          <mat-autocomplete
+            [displayWith]="displayFn"
+            #autoGroup="matAutocomplete"
+            (optionSelected)="handleChange()"
+          >
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
+      <h1 style="font-size: 16px;">
+        <!-- <span><b></b>Choose date and time: &nbsp;&nbsp;</span> -->
+      </h1>
+      <!-- <hr /> -->
+      <div>
+        <kendo-daterange>
+          <label>
+            <span class="label"><b>From </b> </span>
+            <kendo-dateinput
+              [format]="'MMMM-dd-yyyy'"
+              [min]="fromMinDate"
+              [max]="fromMaxDate"
+              kendoDateRangeStartInput
+              autoCorrectOn="change"
+              [(value)]="range.start"
+            >
+            </kendo-dateinput>
+          </label>
+          <label>
+            <span class="label"> <b>&nbsp;&nbsp;&nbsp;To </b></span>
+            <kendo-dateinput
+              [format]="'MMMM-dd-yyyy'"
+              [min]="toMinDate"
+              [max]="toMaxDate"
+              kendoDateRangeEndInput
+              autoCorrectOn="change"
+              [(value)]="range.end"
+            ></kendo-dateinput>
+          </label>
+          <kendo-daterange-popup [animate]="{ type: 'fade' }">
+            <ng-template kendoDateRangePopupTemplate>
+              <kendo-multiviewcalendar kendoDateRangeSelection>
+              </kendo-multiviewcalendar>
+            </ng-template>
+          </kendo-daterange-popup>
+        </kendo-daterange>
+
+        <kendo-dropdownlist
+          style="margin-left: 15px;"
+          [data]="listItems"
+          [(ngModel)]="current_booking_time"
+        >
+        </kendo-dropdownlist>
+
+        <button class="buttons" mat-raised-button (click)="addComment()">
+          {{ current_booking_comment.length > 0 ? "Edit " : "Add " }}
+          comment
+        </button>
+        <button
+          class="buttons"
+          mat-raised-button
+          color="primary"
+          (click)="addBooking()"
+        >
+          Add booking
+        </button>
+
+        <button
+          *ngIf="showTable()"
+          class="buttons"
+          mat-stroked-button
+          color="primary"
+          (click)="removeAll()"
+          style="margin-left: 4%;"
+        >
+          Clear all
+        </button>
+
+        <hr />
+        <p class="error" *ngIf="error.length > 0">{{ error }}</p>
+
+        <div class="table-wrapper">
+          <kendo-dialog
+            title="Add a comment"
+            *ngIf="dialog_opened"
+            (close)="close('cancel')"
+            [minWidth]="250"
+            [width]="450"
+          >
+            <textarea
+              matInput
+              placeholder="My Comment"
+              style="width: 100%;"
+              [(ngModel)]="current_booking_comment"
+              maxlength="75"
+              rows="4"
+            ></textarea>
+            <kendo-dialog-actions style="padding: 15px;">
+              <button
+                class="buttons"
+                mat-raised-button
+                (click)="close('cancel')"
+              >
+                Cancel
+              </button>
+              <button
+                class="buttons"
+                mat-raised-button
+                color="primary"
+                (click)="close('save')"
+              >
+                Save
+              </button>
+            </kendo-dialog-actions>
+          </kendo-dialog>
+        </div>
+
+        <div *ngIf="showTable()" class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let element">
+                {{ ChangeViewDateFormat(element.date_time) }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Time">
+              <th mat-header-cell *matHeaderCellDef>Time</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.date_time.toString().slice(11, 16) }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Comment">
+              <th mat-header-cell *matHeaderCellDef>Comment</th>
+
+              <td
+                style="text-overflow: ellipsis;"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.reason }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Remove">
+              <th mat-header-cell *matHeaderCellDef>Remove</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  style="
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                  "
+                  (click)="removeBooking(element.index)"
+                >
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+              </td>
+            </ng-container>
+
+            <div class="table-wrapper">
+              <kendo-dialog
+                title="Add a comment"
+                *ngIf="dialog_opened"
+                (close)="close('cancel')"
+                [minWidth]="250"
+                [width]="450"
+              >
+                <textarea
+                  matInput
+                  placeholder="Comment"
+                  style="width: 100%;"
+                  [(ngModel)]="current_booking_comment"
+                  maxlength="75"
+                  rows="4"
+                ></textarea>
+                <kendo-dialog-actions style="padding: 15px;">
+                  <button
+                    class="buttons"
+                    mat-raised-button
+                    (click)="close('cancel')"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="buttons"
+                    mat-raised-button
+                    color="primary"
+                    (click)="close('save')"
+                  >
+                    Save
+                  </button>
+                </kendo-dialog-actions>
+              </kendo-dialog>
+            </div>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        </div>
+        <br /><br />
+        <button
+          *ngIf="showTable()"
+          mat-raised-button
+          color="primary"
+          (click)="saveBookings()"
+        >
+          Confirm Bookings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--End #F04-Khidir-->
+</div>

@@ -1,0 +1,48 @@
+/*Start #F04-Khidir*/
+div.add_booking {
+  margin-left: 20px;
+}
+h3 {
+  margin: 0 0 40px 0;
+}
+button.buttons {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+div.table-wrapper {
+  margin-top: 50px;
+}
+
+.mat-table {
+  width: 100%;
+  background: white;
+}
+td {
+  color: black !important;
+  border-bottom: 1px solid lightgray !important;
+}
+th {
+  color: rgba(0, 0, 0, 0.54) !important;
+  border-bottom: 1px solid lightgray !important;
+}
+
+.error {
+  color: red;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+/*End #F04-Khidir*/
+
+.fa-trash-o {
+  color: tomato;
+  transform: scale(1.5);
+  transition: 0.5s ease;
+}
+.fa-trash-o:hover {
+  color: grey;
+  transform: scale(2);
+  transition: 0.5s ease;
+}

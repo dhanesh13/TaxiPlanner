@@ -1,0 +1,13 @@
+<div id="main-wrapper" *ngIf="show">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+
+  <div class="page-wrapper">
+    <div class="container-fluid">
+      <router-outlet *ngIf="show"></router-outlet>
+    </div>
+  </div>
+</div>
+<div id="page-wrapper" *ngIf="!show">
+  <router-outlet *ngIf="!show"> </router-outlet>
+</div>

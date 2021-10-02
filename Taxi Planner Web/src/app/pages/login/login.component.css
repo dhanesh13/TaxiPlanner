@@ -1,0 +1,171 @@
+body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .spinner{
+    margin: 0 auto;
+  }
+  
+  .error{
+    color: red;
+  }
+  
+  
+  .main-head{
+    height: 150px;
+    background: #FFF;
+  
+  }
+  
+  .sidenav {
+    height: 100%;
+    background-color: #000;
+    background-image: url('../../../assets/Sd_Taxi.jpg');
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .bg-image {
+    /* The image used */
+    background-image: url('../../../assets/Sd_Taxi.jpg');
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-img {
+    /* The image used */
+    background-image: url('../../../assets/Sd_Taxi.jpg');
+  
+    /* Control the height of the image */
+    min-height: 100vh;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  /* Add styles to the form container */
+  .container {
+    position: absolute;
+    right: 0;
+    max-width: 500px;
+    min-height: 100vh;
+    padding: 16px;
+    background-color: white;
+    opacity:0.8;
+  }
+  
+  /* Full-width input fields */
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: #455A64;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity:1.0;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+  .main {
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+  }
+  
+  @media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 5%;
+    }
+  
+    .register-form{
+        margin-top: 10%;
+    }
+  }
+  
+  @media screen and (min-width: 278px){
+    .main{
+        margin-left: 40%;
+    }
+  
+    .sidenav{
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+  
+    .login-form{
+        margin-top: 50%;
+    }
+  
+    .register-form{
+        margin-top: 20%;
+    }
+  }
+  
+  
+  .login-main-text{
+   font-size: 16px;
+    color: #000;
+  }
+  
+  
+  .login-main-text h2{
+     color: #000;
+    font-weight: 300;
+  }
+  
+  .btn-black{
+    background-color: #000 !important;
+    color: #fff;
+  }
+  
+  .ng-invalid.ng-touched {
+    border-color: red;
+  }
+  .error-block {
+    color: red;
+  }
+  
+  

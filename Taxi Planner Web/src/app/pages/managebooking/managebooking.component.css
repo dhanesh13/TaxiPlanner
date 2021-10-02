@@ -1,0 +1,78 @@
+.bookings {
+  margin-top: 35px;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  /* background: white; */
+  text-align: center;
+}
+td {
+  color: black;
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+}
+th {
+  color: rgba(0, 0, 0, 0.54);
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+}
+.action {
+  padding: 15px;
+}
+.button-container {
+  display: inline-block;
+  margin-right: 10px;
+  /* float: right !important;
+  text-align: right !important; */
+}
+.button-container-2 {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: default !important;
+}
+.search {
+  color: red;
+}
+
+.dropdowns {
+  width: 200px;
+}
+.action_buttons {
+  width: 40px;
+  height: 40px;
+}
+
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.reasonOverflow {
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  max-width: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  background-color: gray;
+}
+
+.approveBtn {
+  background-color: #7c2855;
+  color: #fff;
+}
+.rejectBtn {
+  background-color: #ec7e00;
+  color: #fff;
+}
